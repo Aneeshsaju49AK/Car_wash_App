@@ -41,50 +41,30 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Container(
                 width: sizeWidth / 1,
-                height: sizeHeight / 3.4,
-                color: Colors.blue,
+                height: sizeHeight / 3.3,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 23),
-                          child: Text(
-                            "#Special Offer for You",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text("See all"),
-                        ),
-                      ],
+                    OfferHeadWidgetCommon(
+                      label: "#Special Offer for You",
                     ),
                     Container(
-                        color: Colors.yellow,
-                        height: sizeHeight / 5,
+                        
+                        height: sizeHeight / 4.8,
                         child: CarouselSlider.builder(
-                            itemCount: 10,
+                            itemCount: 3,
                             itemBuilder: (context, index, int realIndex) {
                               return Card(
-                                  clipBehavior: Clip.antiAlias,
-                                  elevation: 1,
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          // Text(
-                                          //   index.toString(),
-                                          // ),
-                                        ],
-                                      )
-                                    ],
-                                  ));
+                                clipBehavior: Clip.antiAlias,
+                                elevation: 1,
+                                child: Container(
+                                  width: sizeWidth / 1,
+                                  child: Image.asset(
+                                    'assets/images/Untitled.jpeg',
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              );
                             },
                             options: CarouselOptions(
                               height: sizeHeight / 5,
@@ -98,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       child: SmoothPageIndicator(
                         controller: controller,
-                        count: 10,
+                        count: 3,
                         effect: WormEffect(),
                       ),
                     ),
@@ -107,13 +87,94 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Container(
                 width: sizeWidth / 1,
-                height: sizeHeight / 2,
-                color: const Color.fromARGB(255, 65, 243, 33),
-              )
+                height: sizeHeight / 2.2,
+                
+                child: Column(
+                  children: [
+                    OfferHeadWidgetCommon(
+                      label: "Services for You",
+                    ),
+                    Container(
+                      width: sizeWidth / 1,
+                      height: sizeHeight / 7.5,
+                     
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 6,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(left: 8),
+                            child: Column(
+                              children: [
+                                CircleAvatar(
+                                  radius: 35,
+                                ),
+                                Text("data")
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Container(
+                      width: sizeWidth / 1,
+                      height: sizeHeight / 4,
+                      
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 4,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(6.0),
+                            child: Container(
+                              width: sizeWidth / 1.1,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.amber,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class OfferHeadWidgetCommon extends StatelessWidget {
+  final String label;
+  const OfferHeadWidgetCommon({
+    super.key,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 23),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: Text("See all"),
+        ),
+      ],
     );
   }
 }

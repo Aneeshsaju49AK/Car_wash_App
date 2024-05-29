@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       /*given the titile as Car wash and also used the ThemeData to set common colors layout also 
     the common or const colors and sizedbox and const value given core of presentation
     check it*/
@@ -20,11 +22,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         //buttonNavigation backgroundcolor set here
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.white,
         ),
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.deepPurple,
-          background: Colors.red,
+          
         ),
         useMaterial3: true,
       ),
